@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f8976d4442c4906b872d6caa4c4892b" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectTAAAUModel.Address" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.Admin" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.Cart" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.Credit_card" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.Customer" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.OrderStatu" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.OrderTable" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.PaymentStatu" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.Wallet" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectTAAAUModel.WishList" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__Customer__addid__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__Cart__cust_id__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__Cart__prod_id__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__Customer__ccid__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__OrderTabl__cust___3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__Wallet__cust_id__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__WishList__cust_i__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__OrderTabl__statu__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__OrderTabl__payme__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__OrderTabl__prod___3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectTAAAUModel.FK__WishList__prod_i__49C3F6B7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

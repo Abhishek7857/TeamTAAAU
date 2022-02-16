@@ -1,0 +1,1434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectTAAAUModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="houseno" Type="int" Nullable="false" />
+          <Property Name="locality" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="area" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="landmark" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="pincode" Type="varchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adminId" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="phoneNumber" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="25" />
+          <Property Name="password" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_id" Type="int" Nullable="false" />
+          <Property Name="prod_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Credit_card">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cardNo" Type="int" Nullable="false" />
+          <Property Name="cardHolder" Type="varchar" MaxLength="225" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="addid" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="phoneNumber" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ccid" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="225" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_id" Type="int" Nullable="false" />
+          <Property Name="prod_id" Type="int" Nullable="false" />
+          <Property Name="order_Date" Type="datetime" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="payment_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentAmount" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="paymentStatus" Type="varchar" MaxLength="225" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="brand" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="details" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="aboutProduct" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="countryOfOrigin" Type="varchar" MaxLength="225" Nullable="false" />
+          <Property Name="seller" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userRating" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Wallet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_id" Type="int" Nullable="false" />
+          <Property Name="cupons" Type="varchar" MaxLength="30" />
+          <Property Name="giftCard" Type="varchar" MaxLength="40" />
+          <Property Name="addMoney" Type="money" />
+          <Property Name="spendMoney" Type="money" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_id" Type="int" Nullable="false" />
+          <Property Name="prod_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cart__cust_id__44FF419A">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__prod_id__45F365D3">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__addid__276EDEB3">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="addid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__ccid__286302EC">
+          <End Role="Credit_card" Type="Self.Credit_card" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Credit_card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ccid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__cust___3C69FB99">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__payme__3F466844">
+          <End Role="PaymentStatus" Type="Self.PaymentStatus" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__prod___3D5E1FD2">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__statu__3E52440B">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wallet__cust_id__4222D4EF">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WishList__cust_i__48CFD27E">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WishList__prod_i__49C3F6B7">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DeleteAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteCart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteCredit_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteOrderStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteOrderTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeletePaymentStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteWallet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteWishList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InserPaymentStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="paymentAmount" Type="varchar" Mode="In" />
+          <Parameter Name="paymentStatus" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="houseno" Type="int" Mode="In" />
+          <Parameter Name="locality" Type="varchar" Mode="In" />
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="landMark" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="p_state" Type="varchar" Mode="In" />
+          <Parameter Name="pincode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="lastName" Type="varchar" Mode="In" />
+          <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="role" Type="varchar" Mode="In" />
+          <Parameter Name="gender" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertCart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="prod_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertCredit_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cardNo" Type="int" Mode="In" />
+          <Parameter Name="cardHolder" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="addid" Type="int" Mode="In" />
+          <Parameter Name="first_name" Type="varchar" Mode="In" />
+          <Parameter Name="last_name" Type="varchar" Mode="In" />
+          <Parameter Name="gender" Type="varchar" Mode="In" />
+          <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="ccid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertOrderStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="status" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertOrderTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="prod_id" Type="int" Mode="In" />
+          <Parameter Name="order_Date" Type="datetime" Mode="In" />
+          <Parameter Name="status_id" Type="int" Mode="In" />
+          <Parameter Name="payment_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productName" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="float" Mode="In" />
+          <Parameter Name="brand" Type="varchar" Mode="In" />
+          <Parameter Name="details" Type="varchar" Mode="In" />
+          <Parameter Name="aboutProduct" Type="varchar" Mode="In" />
+          <Parameter Name="countryOfOrigin" Type="varchar" Mode="In" />
+          <Parameter Name="seller" Type="varchar" Mode="In" />
+          <Parameter Name="userRating" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertWallet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="cupons" Type="varchar" Mode="In" />
+          <Parameter Name="giftCard" Type="varchar" Mode="In" />
+          <Parameter Name="addMoney" Type="money" Mode="In" />
+          <Parameter Name="spendMoney" Type="money" Mode="In" />
+        </Function>
+        <Function Name="InsertWishList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="prod_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="houseno" Type="int" Mode="In" />
+          <Parameter Name="locality" Type="varchar" Mode="In" />
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="landMark" Type="varchar" Mode="In" />
+          <Parameter Name="city" Type="varchar" Mode="In" />
+          <Parameter Name="p_state" Type="varchar" Mode="In" />
+          <Parameter Name="pincode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="lastName" Type="varchar" Mode="In" />
+          <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="role" Type="varchar" Mode="In" />
+          <Parameter Name="gender" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateCart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="prod_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateCredit_card" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cardNo" Type="int" Mode="In" />
+          <Parameter Name="cardHolder" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="first_name" Type="varchar" Mode="In" />
+          <Parameter Name="last_name" Type="varchar" Mode="In" />
+          <Parameter Name="gender" Type="varchar" Mode="In" />
+          <Parameter Name="phoneNumber" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateOrderStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateOrderTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="prod_id" Type="int" Mode="In" />
+          <Parameter Name="order_Date" Type="datetime" Mode="In" />
+          <Parameter Name="status_id" Type="int" Mode="In" />
+          <Parameter Name="payment_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdatePaymentStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="paymentAmount" Type="varchar" Mode="In" />
+          <Parameter Name="paymentStatus" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productId" Type="int" Mode="In" />
+          <Parameter Name="productName" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="price" Type="float" Mode="In" />
+          <Parameter Name="brand" Type="varchar" Mode="In" />
+          <Parameter Name="details" Type="varchar" Mode="In" />
+          <Parameter Name="aboutProduct" Type="varchar" Mode="In" />
+          <Parameter Name="countryOfOrigin" Type="varchar" Mode="In" />
+          <Parameter Name="seller" Type="varchar" Mode="In" />
+          <Parameter Name="userRating" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateWallet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="cupons" Type="varchar" Mode="In" />
+          <Parameter Name="giftCard" Type="varchar" Mode="In" />
+          <Parameter Name="addMoney" Type="money" Mode="In" />
+          <Parameter Name="spendMoney" Type="money" Mode="In" />
+        </Function>
+        <Function Name="UpdateWishList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="cust_id" Type="int" Mode="In" />
+          <Parameter Name="prod_id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProjectTAAAUModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credit_card" EntityType="Self.Credit_card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderTable" EntityType="Self.OrderTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentStatus" EntityType="Self.PaymentStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wallet" EntityType="Self.Wallet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cart__cust_id__44FF419A" Association="Self.FK__Cart__cust_id__44FF419A">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__prod_id__45F365D3" Association="Self.FK__Cart__prod_id__45F365D3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__addid__276EDEB3" Association="Self.FK__Customer__addid__276EDEB3">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__ccid__286302EC" Association="Self.FK__Customer__ccid__286302EC">
+            <End Role="Credit_card" EntitySet="Credit_card" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__cust___3C69FB99" Association="Self.FK__OrderTabl__cust___3C69FB99">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OrderTable" EntitySet="OrderTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__payme__3F466844" Association="Self.FK__OrderTabl__payme__3F466844">
+            <End Role="PaymentStatus" EntitySet="PaymentStatus" />
+            <End Role="OrderTable" EntitySet="OrderTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__prod___3D5E1FD2" Association="Self.FK__OrderTabl__prod___3D5E1FD2">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderTable" EntitySet="OrderTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__statu__3E52440B" Association="Self.FK__OrderTabl__statu__3E52440B">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="OrderTable" EntitySet="OrderTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wallet__cust_id__4222D4EF" Association="Self.FK__Wallet__cust_id__4222D4EF">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Wallet" EntitySet="Wallet" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WishList__cust_i__48CFD27E" Association="Self.FK__WishList__cust_i__48CFD27E">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WishList__prod_i__49C3F6B7" Association="Self.FK__WishList__prod_i__49C3F6B7">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectTAAAUModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="houseno" Type="Int32" Nullable="false" />
+          <Property Name="locality" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="landmark" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pincode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__addid__276EDEB3" FromRole="Address" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adminId" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cust_id" Type="Int32" Nullable="false" />
+          <Property Name="prod_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Cart__cust_id__44FF419A" FromRole="Cart" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Cart__prod_id__45F365D3" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Credit_card">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cardNo" Type="Int32" Nullable="false" />
+          <Property Name="cardHolder" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__ccid__286302EC" FromRole="Credit_card" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addid" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phoneNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ccid" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Customer__addid__276EDEB3" FromRole="Customer" ToRole="Address" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__cust_id__44FF419A" FromRole="Customer" ToRole="Cart" />
+          <NavigationProperty Name="Credit_card" Relationship="Self.FK__Customer__ccid__286302EC" FromRole="Customer" ToRole="Credit_card" />
+          <NavigationProperty Name="OrderTables" Relationship="Self.FK__OrderTabl__cust___3C69FB99" FromRole="Customer" ToRole="OrderTable" />
+          <NavigationProperty Name="Wallets" Relationship="Self.FK__Wallet__cust_id__4222D4EF" FromRole="Customer" ToRole="Wallet" />
+          <NavigationProperty Name="WishLists" Relationship="Self.FK__WishList__cust_i__48CFD27E" FromRole="Customer" ToRole="WishList" />
+        </EntityType>
+        <EntityType Name="OrderStatu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderTables" Relationship="Self.FK__OrderTabl__statu__3E52440B" FromRole="OrderStatus" ToRole="OrderTable" />
+        </EntityType>
+        <EntityType Name="OrderTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cust_id" Type="Int32" Nullable="false" />
+          <Property Name="prod_id" Type="Int32" Nullable="false" />
+          <Property Name="order_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__OrderTabl__cust___3C69FB99" FromRole="OrderTable" ToRole="Customer" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK__OrderTabl__statu__3E52440B" FromRole="OrderTable" ToRole="OrderStatus" />
+          <NavigationProperty Name="PaymentStatu" Relationship="Self.FK__OrderTabl__payme__3F466844" FromRole="OrderTable" ToRole="PaymentStatus" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderTabl__prod___3D5E1FD2" FromRole="OrderTable" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="PaymentStatu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentAmount" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="paymentStatus" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderTables" Relationship="Self.FK__OrderTabl__payme__3F466844" FromRole="PaymentStatus" ToRole="OrderTable" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="brand" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aboutProduct" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="countryOfOrigin" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="seller" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userRating" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__prod_id__45F365D3" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="OrderTables" Relationship="Self.FK__OrderTabl__prod___3D5E1FD2" FromRole="Product" ToRole="OrderTable" />
+          <NavigationProperty Name="WishLists" Relationship="Self.FK__WishList__prod_i__49C3F6B7" FromRole="Product" ToRole="WishList" />
+        </EntityType>
+        <EntityType Name="Wallet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cust_id" Type="Int32" Nullable="false" />
+          <Property Name="cupons" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="giftCard" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="addMoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="spendMoney" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Wallet__cust_id__4222D4EF" FromRole="Wallet" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cust_id" Type="Int32" Nullable="false" />
+          <Property Name="prod_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__WishList__cust_i__48CFD27E" FromRole="WishList" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__WishList__prod_i__49C3F6B7" FromRole="WishList" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Customer__addid__276EDEB3">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="addid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__cust_id__44FF419A">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__prod_id__45F365D3">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Customer__ccid__286302EC">
+          <End Role="Credit_card" Type="Self.Credit_card" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Credit_card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ccid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__cust___3C69FB99">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wallet__cust_id__4222D4EF">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Wallet" Type="Self.Wallet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="Wallet">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WishList__cust_i__48CFD27E">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__statu__3E52440B">
+          <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__payme__3F466844">
+          <End Role="PaymentStatus" Type="Self.PaymentStatu" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderTabl__prod___3D5E1FD2">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderTable" Type="Self.OrderTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="OrderTable">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WishList__prod_i__49C3F6B7">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="prod_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectTAAAUEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Credit_card" EntityType="Self.Credit_card" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+          <EntitySet Name="OrderTables" EntityType="Self.OrderTable" />
+          <EntitySet Name="PaymentStatus" EntityType="Self.PaymentStatu" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Wallets" EntityType="Self.Wallet" />
+          <EntitySet Name="WishLists" EntityType="Self.WishList" />
+          <AssociationSet Name="FK__Customer__addid__276EDEB3" Association="Self.FK__Customer__addid__276EDEB3">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__cust_id__44FF419A" Association="Self.FK__Cart__cust_id__44FF419A">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__prod_id__45F365D3" Association="Self.FK__Cart__prod_id__45F365D3">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__ccid__286302EC" Association="Self.FK__Customer__ccid__286302EC">
+            <End Role="Credit_card" EntitySet="Credit_card" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__cust___3C69FB99" Association="Self.FK__OrderTabl__cust___3C69FB99">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="OrderTable" EntitySet="OrderTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wallet__cust_id__4222D4EF" Association="Self.FK__Wallet__cust_id__4222D4EF">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Wallet" EntitySet="Wallets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WishList__cust_i__48CFD27E" Association="Self.FK__WishList__cust_i__48CFD27E">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__statu__3E52440B" Association="Self.FK__OrderTabl__statu__3E52440B">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="OrderTable" EntitySet="OrderTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__payme__3F466844" Association="Self.FK__OrderTabl__payme__3F466844">
+            <End Role="PaymentStatus" EntitySet="PaymentStatus" />
+            <End Role="OrderTable" EntitySet="OrderTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderTabl__prod___3D5E1FD2" Association="Self.FK__OrderTabl__prod___3D5E1FD2">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderTable" EntitySet="OrderTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WishList__prod_i__49C3F6B7" Association="Self.FK__WishList__prod_i__49C3F6B7">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+          <FunctionImport Name="DeleteAddress">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteAdmin">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteCart">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteCredit_card">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteCustomer">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteOrderStatus">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteOrderTable">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeletePaymentStatus">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteProduct">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteWallet">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteWishList">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InserPaymentStatus">
+            <Parameter Name="paymentAmount" Mode="In" Type="String" />
+            <Parameter Name="paymentStatus" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertAddress">
+            <Parameter Name="houseno" Mode="In" Type="Int32" />
+            <Parameter Name="locality" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="landMark" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="p_state" Mode="In" Type="String" />
+            <Parameter Name="pincode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertAdmin">
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="role" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertCart">
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="prod_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertCredit_card">
+            <Parameter Name="cardNo" Mode="In" Type="Int32" />
+            <Parameter Name="cardHolder" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertCustomer">
+            <Parameter Name="addid" Mode="In" Type="Int32" />
+            <Parameter Name="first_name" Mode="In" Type="String" />
+            <Parameter Name="last_name" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="ccid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertOrderStatus">
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertOrderTable">
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="prod_id" Mode="In" Type="Int32" />
+            <Parameter Name="order_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="status_id" Mode="In" Type="Int32" />
+            <Parameter Name="payment_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertProduct">
+            <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Double" />
+            <Parameter Name="brand" Mode="In" Type="String" />
+            <Parameter Name="details" Mode="In" Type="String" />
+            <Parameter Name="aboutProduct" Mode="In" Type="String" />
+            <Parameter Name="countryOfOrigin" Mode="In" Type="String" />
+            <Parameter Name="seller" Mode="In" Type="String" />
+            <Parameter Name="userRating" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertWallet">
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="cupons" Mode="In" Type="String" />
+            <Parameter Name="giftCard" Mode="In" Type="String" />
+            <Parameter Name="addMoney" Mode="In" Type="Decimal" />
+            <Parameter Name="spendMoney" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="InsertWishList">
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="prod_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAddress">
+            <Parameter Name="houseno" Mode="In" Type="Int32" />
+            <Parameter Name="locality" Mode="In" Type="String" />
+            <Parameter Name="area" Mode="In" Type="String" />
+            <Parameter Name="landMark" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="p_state" Mode="In" Type="String" />
+            <Parameter Name="pincode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAdmin">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="role" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCart">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="prod_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCredit_card">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cardNo" Mode="In" Type="Int32" />
+            <Parameter Name="cardHolder" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateCustomer">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="first_name" Mode="In" Type="String" />
+            <Parameter Name="last_name" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateOrderStatus">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateOrderTable">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="prod_id" Mode="In" Type="Int32" />
+            <Parameter Name="order_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="status_id" Mode="In" Type="Int32" />
+            <Parameter Name="payment_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdatePaymentStatus">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="paymentAmount" Mode="In" Type="String" />
+            <Parameter Name="paymentStatus" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateProduct">
+            <Parameter Name="productId" Mode="In" Type="Int32" />
+            <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="price" Mode="In" Type="Double" />
+            <Parameter Name="brand" Mode="In" Type="String" />
+            <Parameter Name="details" Mode="In" Type="String" />
+            <Parameter Name="aboutProduct" Mode="In" Type="String" />
+            <Parameter Name="countryOfOrigin" Mode="In" Type="String" />
+            <Parameter Name="seller" Mode="In" Type="String" />
+            <Parameter Name="userRating" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateWallet">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="cupons" Mode="In" Type="String" />
+            <Parameter Name="giftCard" Mode="In" Type="String" />
+            <Parameter Name="addMoney" Mode="In" Type="Decimal" />
+            <Parameter Name="spendMoney" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateWishList">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="cust_id" Mode="In" Type="Int32" />
+            <Parameter Name="prod_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectTAAAUModelStoreContainer" CdmEntityContainer="ProjectTAAAUEntities5">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="houseno" ColumnName="houseno" />
+                <ScalarProperty Name="locality" ColumnName="locality" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="landmark" ColumnName="landmark" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Address">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertAddress">
+                  <ScalarProperty Name="state" ParameterName="p_state" />
+                  <ScalarProperty Name="landmark" ParameterName="landMark" />
+                  <ScalarProperty Name="pincode" ParameterName="pincode" />
+                  <ScalarProperty Name="city" ParameterName="city" />
+                  <ScalarProperty Name="area" ParameterName="area" />
+                  <ScalarProperty Name="locality" ParameterName="locality" />
+                  <ScalarProperty Name="houseno" ParameterName="houseno" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateAddress">
+                  <ScalarProperty Name="state" ParameterName="p_state" Version="Current" />
+                  <ScalarProperty Name="landmark" ParameterName="landMark" Version="Current" />
+                  <ScalarProperty Name="pincode" ParameterName="pincode" Version="Current" />
+                  <ScalarProperty Name="city" ParameterName="city" Version="Current" />
+                  <ScalarProperty Name="area" ParameterName="area" Version="Current" />
+                  <ScalarProperty Name="locality" ParameterName="locality" Version="Current" />
+                  <ScalarProperty Name="houseno" ParameterName="houseno" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteAddress">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="adminId" ColumnName="adminId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Admin">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertAdmin">
+                  <ScalarProperty Name="gender" ParameterName="gender" />
+                  <ScalarProperty Name="role" ParameterName="role" />
+                  <ScalarProperty Name="password" ParameterName="password" />
+                  <ScalarProperty Name="email" ParameterName="email" />
+                  <ScalarProperty Name="phoneNumber" ParameterName="phoneNumber" />
+                  <ScalarProperty Name="lastName" ParameterName="lastName" />
+                  <ScalarProperty Name="firstName" ParameterName="firstName" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateAdmin">
+                  <ScalarProperty Name="gender" ParameterName="gender" Version="Current" />
+                  <ScalarProperty Name="role" ParameterName="role" Version="Current" />
+                  <ScalarProperty Name="password" ParameterName="password" Version="Current" />
+                  <ScalarProperty Name="email" ParameterName="email" Version="Current" />
+                  <ScalarProperty Name="phoneNumber" ParameterName="phoneNumber" Version="Current" />
+                  <ScalarProperty Name="lastName" ParameterName="lastName" Version="Current" />
+                  <ScalarProperty Name="firstName" ParameterName="firstName" Version="Current" />
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteAdmin">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Cart">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteCart">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateCart">
+                  <ScalarProperty Name="prod_id" ParameterName="prod_id" Version="Current" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" Version="Current" />
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertCart">
+                  <ScalarProperty Name="prod_id" ParameterName="prod_id" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Credit_card">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Credit_card">
+              <MappingFragment StoreEntitySet="Credit_card">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cardNo" ColumnName="cardNo" />
+                <ScalarProperty Name="cardHolder" ColumnName="cardHolder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Credit_card">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertCredit_card">
+                  <ScalarProperty Name="cardHolder" ParameterName="cardHolder" />
+                  <ScalarProperty Name="cardNo" ParameterName="cardNo" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateCredit_card">
+                  <ScalarProperty Name="cardHolder" ParameterName="cardHolder" Version="Current" />
+                  <ScalarProperty Name="cardNo" ParameterName="cardNo" Version="Current" />
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteCredit_card">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="addid" ColumnName="addid" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="ccid" ColumnName="ccid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Customer">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertCustomer">
+                  <ScalarProperty Name="ccid" ParameterName="ccid" />
+                  <ScalarProperty Name="password" ParameterName="password" />
+                  <ScalarProperty Name="email" ParameterName="email" />
+                  <ScalarProperty Name="phoneNumber" ParameterName="phoneNumber" />
+                  <ScalarProperty Name="gender" ParameterName="gender" />
+                  <ScalarProperty Name="last_name" ParameterName="last_name" />
+                  <ScalarProperty Name="first_name" ParameterName="first_name" />
+                  <ScalarProperty Name="addid" ParameterName="addid" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateCustomer">
+                  <ScalarProperty Name="password" ParameterName="password" Version="Current" />
+                  <ScalarProperty Name="email" ParameterName="email" Version="Current" />
+                  <ScalarProperty Name="phoneNumber" ParameterName="phoneNumber" Version="Current" />
+                  <ScalarProperty Name="gender" ParameterName="gender" Version="Current" />
+                  <ScalarProperty Name="last_name" ParameterName="last_name" Version="Current" />
+                  <ScalarProperty Name="first_name" ParameterName="first_name" Version="Current" />
+                  <ScalarProperty Name="userid" ParameterName="userid" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteCustomer">
+                  <ScalarProperty Name="userid" ParameterName="userid" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.OrderStatu">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.OrderStatu">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertOrderStatus">
+                  <ScalarProperty Name="status" ParameterName="status" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateOrderStatus">
+                  <ScalarProperty Name="status" ParameterName="status" Version="Current" />
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteOrderStatus">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTables">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.OrderTable">
+              <MappingFragment StoreEntitySet="OrderTable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+                <ScalarProperty Name="order_Date" ColumnName="order_Date" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.OrderTable">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertOrderTable">
+                  <ScalarProperty Name="payment_id" ParameterName="payment_id" />
+                  <ScalarProperty Name="status_id" ParameterName="status_id" />
+                  <ScalarProperty Name="order_Date" ParameterName="order_Date" />
+                  <ScalarProperty Name="prod_id" ParameterName="prod_id" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateOrderTable">
+                  <ScalarProperty Name="payment_id" ParameterName="payment_id" Version="Current" />
+                  <ScalarProperty Name="status_id" ParameterName="status_id" Version="Current" />
+                  <ScalarProperty Name="order_Date" ParameterName="order_Date" Version="Current" />
+                  <ScalarProperty Name="prod_id" ParameterName="prod_id" Version="Current" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" Version="Current" />
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteOrderTable">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentStatus">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.PaymentStatu">
+              <MappingFragment StoreEntitySet="PaymentStatus">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="paymentAmount" ColumnName="paymentAmount" />
+                <ScalarProperty Name="paymentStatus" ColumnName="paymentStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.PaymentStatu">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InserPaymentStatus">
+                  <ScalarProperty Name="paymentStatus" ParameterName="paymentStatus" />
+                  <ScalarProperty Name="paymentAmount" ParameterName="paymentAmount" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.DeletePaymentStatus">
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeletePaymentStatus">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="aboutProduct" ColumnName="aboutProduct" />
+                <ScalarProperty Name="countryOfOrigin" ColumnName="countryOfOrigin" />
+                <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="userRating" ColumnName="userRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Product">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertProduct">
+                  <ScalarProperty Name="userRating" ParameterName="userRating" />
+                  <ScalarProperty Name="seller" ParameterName="seller" />
+                  <ScalarProperty Name="countryOfOrigin" ParameterName="countryOfOrigin" />
+                  <ScalarProperty Name="aboutProduct" ParameterName="aboutProduct" />
+                  <ScalarProperty Name="details" ParameterName="details" />
+                  <ScalarProperty Name="brand" ParameterName="brand" />
+                  <ScalarProperty Name="price" ParameterName="price" />
+                  <ScalarProperty Name="Category" ParameterName="Category" />
+                  <ScalarProperty Name="productName" ParameterName="productName" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateProduct">
+                  <ScalarProperty Name="userRating" ParameterName="userRating" Version="Current" />
+                  <ScalarProperty Name="seller" ParameterName="seller" Version="Current" />
+                  <ScalarProperty Name="countryOfOrigin" ParameterName="countryOfOrigin" Version="Current" />
+                  <ScalarProperty Name="aboutProduct" ParameterName="aboutProduct" Version="Current" />
+                  <ScalarProperty Name="details" ParameterName="details" Version="Current" />
+                  <ScalarProperty Name="brand" ParameterName="brand" Version="Current" />
+                  <ScalarProperty Name="price" ParameterName="price" Version="Current" />
+                  <ScalarProperty Name="Category" ParameterName="Category" Version="Current" />
+                  <ScalarProperty Name="productName" ParameterName="productName" Version="Current" />
+                  <ScalarProperty Name="productId" ParameterName="productId" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteProduct">
+                  <ScalarProperty Name="productId" ParameterName="productId" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wallets">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Wallet">
+              <MappingFragment StoreEntitySet="Wallet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="cupons" ColumnName="cupons" />
+                <ScalarProperty Name="giftCard" ColumnName="giftCard" />
+                <ScalarProperty Name="addMoney" ColumnName="addMoney" />
+                <ScalarProperty Name="spendMoney" ColumnName="spendMoney" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.Wallet">
+              <ModificationFunctionMapping>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteWallet">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertWallet">
+                  <ScalarProperty Name="spendMoney" ParameterName="spendMoney" />
+                  <ScalarProperty Name="addMoney" ParameterName="addMoney" />
+                  <ScalarProperty Name="giftCard" ParameterName="giftCard" />
+                  <ScalarProperty Name="cupons" ParameterName="cupons" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateWallet">
+                  <ScalarProperty Name="spendMoney" ParameterName="spendMoney" Version="Current" />
+                  <ScalarProperty Name="addMoney" ParameterName="addMoney" Version="Current" />
+                  <ScalarProperty Name="giftCard" ParameterName="giftCard" Version="Current" />
+                  <ScalarProperty Name="cupons" ParameterName="cupons" Version="Current" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" Version="Current" />
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishLists">
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.WishList">
+              <MappingFragment StoreEntitySet="WishList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="prod_id" ColumnName="prod_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="ProjectTAAAUModel.WishList">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="ProjectTAAAUModel.Store.InsertWishList">
+                  <ScalarProperty Name="prod_id" ParameterName="prod_id" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="ProjectTAAAUModel.Store.UpdateWishList">
+                  <ScalarProperty Name="prod_id" ParameterName="prod_id" Version="Current" />
+                  <ScalarProperty Name="cust_id" ParameterName="cust_id" Version="Current" />
+                  <ScalarProperty Name="id" ParameterName="id" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="ProjectTAAAUModel.Store.DeleteWishList">
+                  <ScalarProperty Name="id" ParameterName="id" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteAddress" FunctionName="ProjectTAAAUModel.Store.DeleteAddress" />
+          <FunctionImportMapping FunctionImportName="DeleteAdmin" FunctionName="ProjectTAAAUModel.Store.DeleteAdmin" />
+          <FunctionImportMapping FunctionImportName="DeleteCart" FunctionName="ProjectTAAAUModel.Store.DeleteCart" />
+          <FunctionImportMapping FunctionImportName="DeleteCredit_card" FunctionName="ProjectTAAAUModel.Store.DeleteCredit_card" />
+          <FunctionImportMapping FunctionImportName="DeleteCustomer" FunctionName="ProjectTAAAUModel.Store.DeleteCustomer" />
+          <FunctionImportMapping FunctionImportName="DeleteOrderStatus" FunctionName="ProjectTAAAUModel.Store.DeleteOrderStatus" />
+          <FunctionImportMapping FunctionImportName="DeleteOrderTable" FunctionName="ProjectTAAAUModel.Store.DeleteOrderTable" />
+          <FunctionImportMapping FunctionImportName="DeletePaymentStatus" FunctionName="ProjectTAAAUModel.Store.DeletePaymentStatus" />
+          <FunctionImportMapping FunctionImportName="DeleteProduct" FunctionName="ProjectTAAAUModel.Store.DeleteProduct" />
+          <FunctionImportMapping FunctionImportName="DeleteWallet" FunctionName="ProjectTAAAUModel.Store.DeleteWallet" />
+          <FunctionImportMapping FunctionImportName="DeleteWishList" FunctionName="ProjectTAAAUModel.Store.DeleteWishList" />
+          <FunctionImportMapping FunctionImportName="InserPaymentStatus" FunctionName="ProjectTAAAUModel.Store.InserPaymentStatus" />
+          <FunctionImportMapping FunctionImportName="InsertAddress" FunctionName="ProjectTAAAUModel.Store.InsertAddress" />
+          <FunctionImportMapping FunctionImportName="InsertAdmin" FunctionName="ProjectTAAAUModel.Store.InsertAdmin" />
+          <FunctionImportMapping FunctionImportName="InsertCart" FunctionName="ProjectTAAAUModel.Store.InsertCart" />
+          <FunctionImportMapping FunctionImportName="InsertCredit_card" FunctionName="ProjectTAAAUModel.Store.InsertCredit_card" />
+          <FunctionImportMapping FunctionImportName="InsertCustomer" FunctionName="ProjectTAAAUModel.Store.InsertCustomer" />
+          <FunctionImportMapping FunctionImportName="InsertOrderStatus" FunctionName="ProjectTAAAUModel.Store.InsertOrderStatus" />
+          <FunctionImportMapping FunctionImportName="InsertOrderTable" FunctionName="ProjectTAAAUModel.Store.InsertOrderTable" />
+          <FunctionImportMapping FunctionImportName="InsertProduct" FunctionName="ProjectTAAAUModel.Store.InsertProduct" />
+          <FunctionImportMapping FunctionImportName="InsertWallet" FunctionName="ProjectTAAAUModel.Store.InsertWallet" />
+          <FunctionImportMapping FunctionImportName="InsertWishList" FunctionName="ProjectTAAAUModel.Store.InsertWishList" />
+          <FunctionImportMapping FunctionImportName="UpdateAddress" FunctionName="ProjectTAAAUModel.Store.UpdateAddress" />
+          <FunctionImportMapping FunctionImportName="UpdateAdmin" FunctionName="ProjectTAAAUModel.Store.UpdateAdmin" />
+          <FunctionImportMapping FunctionImportName="UpdateCart" FunctionName="ProjectTAAAUModel.Store.UpdateCart" />
+          <FunctionImportMapping FunctionImportName="UpdateCredit_card" FunctionName="ProjectTAAAUModel.Store.UpdateCredit_card" />
+          <FunctionImportMapping FunctionImportName="UpdateCustomer" FunctionName="ProjectTAAAUModel.Store.UpdateCustomer" />
+          <FunctionImportMapping FunctionImportName="UpdateOrderStatus" FunctionName="ProjectTAAAUModel.Store.UpdateOrderStatus" />
+          <FunctionImportMapping FunctionImportName="UpdateOrderTable" FunctionName="ProjectTAAAUModel.Store.UpdateOrderTable" />
+          <FunctionImportMapping FunctionImportName="UpdatePaymentStatus" FunctionName="ProjectTAAAUModel.Store.UpdatePaymentStatus" />
+          <FunctionImportMapping FunctionImportName="UpdateProduct" FunctionName="ProjectTAAAUModel.Store.UpdateProduct" />
+          <FunctionImportMapping FunctionImportName="UpdateWallet" FunctionName="ProjectTAAAUModel.Store.UpdateWallet" />
+          <FunctionImportMapping FunctionImportName="UpdateWishList" FunctionName="ProjectTAAAUModel.Store.UpdateWishList" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
